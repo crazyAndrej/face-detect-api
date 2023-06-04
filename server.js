@@ -12,11 +12,8 @@ const knex = require('knex');
 const db = knex({
   client: 'pg',
   connection: {
-    host: 'postgresql-acute-10672',
-    port: 5432,
-    user: 'andrejslukasevics',
-    password: '',
-    database: 'face-detection',
+    host: process.env.DATABASE_URL,
+    ssl: true,
   },
 });
 
