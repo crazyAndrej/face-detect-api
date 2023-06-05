@@ -12,11 +12,14 @@ const knex = require('knex');
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0
 
 const db = knex({
+  // connect to your own database here:
   client: 'pg',
   connection: {
-    connectionString: process.env.DATABASE_URL,
-    ssl: true
-  },
+    host : '127.0.0.1',
+    user : 'andrejs lukasevics',
+    password : '',
+    database : 'face-detect'
+  }
 });
 
 const app = express();
@@ -41,9 +44,9 @@ app.post('/imageurl', (req, res) => {
   image.handleApiCall(req, res);
 });
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`app is running on port ${process.env.PORT`});
-});
+app.listen(3000, ()=> {
+  console.log('app is running on port 3000');
+})
 
 /*
 /-->res = this is working
