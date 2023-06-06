@@ -9,17 +9,15 @@ const image = require('./controllers/image');
 
 const knex = require('knex');
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0
-
 const db = knex({
-  // connect to your own database here:
   client: 'pg',
   connection: {
-    host : '127.0.0.1',
-    user : 'andrejs lukasevics',
-    password : '',
-    database : 'face-detect'
-  }
+    host: '127.0.0.1',
+    port: 5432,
+    user: 'andrejslukasevics',
+    password: '',
+    database: 'face-detection',
+  },
 });
 
 const app = express();
@@ -27,9 +25,7 @@ app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => {
-  res.send('it`s working');
-});
+app.get('/', (req, res)=> { res.send(db.users) })
 app.post('/signin', signin.handleSignin(db, bcrypt));
 app.post('/register', (req, res) => {
   register.handleRegister(req, res, db, bcrypt);
