@@ -9,14 +9,24 @@ const image = require('./controllers/image');
 
 const knex = require('knex');
 
+// const db = knex({
+//   client: 'pg',
+//   connection: {
+//     host: '127.0.0.1',
+//     port: 5432,
+//     user: 'andrejslukasevics',
+//     password: '',
+//     database: 'face-detection',
+//   },
+// });
 const db = knex({
   client: 'pg',
   connection: {
-    host: '127.0.0.1',
-    port: 5432,
-    user: 'andrejslukasevics',
-    password: '',
-    database: 'face-detection',
+    host: 'containers-us-west-53.railway.app',
+    port: 5563,
+    user: 'postgres',
+    password: 'oXH52bUDKeGS1zdAmRmt',
+    database: 'railway',
   },
 });
 
