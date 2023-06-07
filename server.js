@@ -42,10 +42,10 @@ app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/", (req, res) => {
-  res.send("welcome")
-})
-// app.get('/', (req, res)=> { res.send(db.users) })
+// app.use("/", (req, res) => {
+//   res.send("welcome")
+// })
+app.get('/', (req, res)=> { res.send(db.users) })
 app.post('/signin', signin.handleSignin(db, bcrypt));
 app.post('/register', (req, res) => {
   register.handleRegister(req, res, db, bcrypt);
